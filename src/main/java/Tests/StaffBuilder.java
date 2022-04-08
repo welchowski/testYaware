@@ -1,3 +1,5 @@
+package Tests;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -5,10 +7,15 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class StaffBuilder {
+    static File csvFile;
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public void builderCVS() {
         initializationArray();
-        initializationCSVfile();
+        try {
+            initializationCSVfile();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     static Scanner scan;
@@ -39,10 +46,8 @@ public class StaffBuilder {
         while (scan.hasNext()) {
             for (int row = 0; row < 20; row++) {
                 str[row] = scan.next();
-                System.out.println(str[row]);
             }
         }
-
     }
 
     static void initializationArray() {
@@ -71,7 +76,7 @@ public class StaffBuilder {
     }
 
     static void initializationCSVfile() throws FileNotFoundException {
-        File csvFile = new File("staff.csv");
+        csvFile = new File("C:\\Users\\Public\\data\\staffData.csv");
         PrintWriter out = new PrintWriter(csvFile);
         String nameColumns = "firstname,lastname,email,group_name";
 
