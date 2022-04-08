@@ -7,13 +7,13 @@ import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 
 public class MainTest extends BaseTest {
-    static String passwordS = "Kc5a6kdxy8URGTr";
-    static String emailS = "rrrezera@gmail.com";
+    static String passwordStr = "Kc5a6kdxy8URGTr";
+    static String emailStr = "rrrezera@gmail.com";
 
     @Test(priority = 1)
     public void loginTest() throws InterruptedException {
         Thread.sleep(2000);
-        loginPage.enterEmailPassword(emailS, passwordS);
+        loginPage.enterEmailPassword(emailStr, passwordStr);
         loginPage.login();
         Assert.assertEquals(loginPage.userNameStr, "Svarch Yan");
     }

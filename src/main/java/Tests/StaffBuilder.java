@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class StaffBuilder {
     static File csvFile;
+    public static String pathFile="C:\\Users\\Public\\data\\staffData.csv";
 
     public void builderCVS() {
         initializationArray();
@@ -76,7 +77,7 @@ public class StaffBuilder {
     }
 
     static void initializationCSVfile() throws FileNotFoundException {
-        csvFile = new File("C:\\Users\\Public\\data\\staffData.csv");
+        csvFile = new File(pathFile);
         PrintWriter out = new PrintWriter(csvFile);
         String nameColumns = "firstname,lastname,email,group_name";
 

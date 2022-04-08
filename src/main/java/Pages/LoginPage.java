@@ -16,12 +16,9 @@ public class LoginPage {
     @FindBy(id = "login-submit")
     private WebElement login;
     @FindBy(className = "yaware-cookie-notice-link")
-    private WebElement coockie;
-    @FindBy(className = "toast-message")
-    private WebElement toast;
+    private WebElement cookie;
     @FindBy(className = "username")
     private WebElement userName;
-
 
     private WebDriver driver;
     private WebDriverWait wait;
@@ -30,12 +27,10 @@ public class LoginPage {
     public LoginPage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, 10);
-
     }
 
     public void enterEmailPassword(String emailS, String passwordS) {
-        driver.get("https://app.yaware.com.ua/");
-        coockie.click();
+        cookie.click();
         email.sendKeys(emailS);
         password.sendKeys(passwordS);
     }

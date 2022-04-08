@@ -15,8 +15,6 @@ public class DeleteStaff {
 
     @FindBy(xpath = "//a[@href='/user-management']")
     private WebElement employee;
-    @FindBy(xpath = "//a[@href=\"#active-users\"]")
-    private WebElement actEmployees;
     @FindBy(xpath = "(//span[@class=\"x-column-header-text\"])[1]")
     private WebElement checkDelete;
     @FindBy(id = "button-1046-btnIconEl")

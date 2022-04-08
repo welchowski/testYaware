@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
@@ -31,9 +30,9 @@ public class InvitePage {
     SimpleDateFormat dateFormat = new SimpleDateFormat("dyyyykkmm");
 
     @FindBy(xpath = "//a[@title='Добавить сотрудника']")
-    private WebElement addsfaff;
+    private WebElement addStaff;
     @FindBy(xpath = "(//div[@class='x-grid-cell-inner '])[3]")
-    private WebElement dataemailsend;
+    private WebElement dataEmailsend;
     @FindBy(xpath = "(//div[@class='x-grid-cell-inner '])[2]")
     private WebElement emailInvitation;
     @FindBy(xpath = "(//a[@class='grid-icon fa fa-link'])[1]")
@@ -43,22 +42,22 @@ public class InvitePage {
     @FindBy(className = "toast-message")
     private WebElement toast;
     @FindBy(xpath = "(//a[@class='grid-icon grid-icon-send-invite'])[1]")
-    private WebElement sendEmailButon;
+    private WebElement sendEmailButton;
     @FindBy(xpath = "//a[@class=\"grid-icon grid-icon-hidden-invite\"]")
-    private WebElement deleteinvite;
+    private WebElement deleteInvite;
     @FindBy(id = "yaware-modal-button-0")
     private WebElement deleteButton;
 
-    Boolean checkingEmailCorrect(String clipboardlink, String email) {
-        clipboardlink = clipboardlink.replace("%40", "@");
-        return clipboardlink.contains(email);
+    Boolean checkingEmailCorrect(String clipBoardlink, String email) {
+        clipBoardlink = clipBoardlink.replace("%40", "@");
+        return clipBoardlink.contains(email);
     }
 
     public String getClipBoard() throws IOException, UnsupportedFlavorException {
-        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        Clipboard clipBoard = Toolkit.getDefaultToolkit().getSystemClipboard();
         DataFlavor dataFlavor = DataFlavor.stringFlavor;
         String str;
-        str = clipboard.getData(dataFlavor).toString();
+        str = clipBoard.getData(dataFlavor).toString();
         return str;
     }
 
@@ -73,15 +72,15 @@ public class InvitePage {
     }
 
     public void sendEmail() {
-        addsfaff.click();
-        sendEmailButon.click();
+        addStaff.click();
+        sendEmailButton.click();
         curentDate = dateFormat.format(new Date());
         wait.until(ExpectedConditions.visibilityOf(toast));
     }
 
     public void checkDateInvitation() {
         waitMs(3000);
-        dateSendingEmail = dataemailsend.getText();
+        dateSendingEmail = dataEmailsend.getText();
         dateSendingEmail = dateSendingEmail.replaceAll("[^0-9]", "");
     }
 
@@ -94,7 +93,7 @@ public class InvitePage {
 
     public void unSendEmail() {
         email = emailInvitation.getText();
-        deleteinvite.click();
+        deleteInvite.click();
         deleteButton.click();
         waitMs(3000);
         emailAfterDeleting = emailInvitation.getText();

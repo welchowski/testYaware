@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static Tests.BaseFunc.waitMs;
+import static Tests.StaffBuilder.pathFile;
 
 public class UsersPage {
     private WebDriver driver;
@@ -38,7 +39,7 @@ public class UsersPage {
         employees.click();
         noActEmployees.click();
         importStaff.click();
-        file.sendKeys("C:\\Users\\Public\\data\\staffData.csv");
+        file.sendKeys(pathFile);
         importButton.click();
         waitMs(2000);
         importButton.click();

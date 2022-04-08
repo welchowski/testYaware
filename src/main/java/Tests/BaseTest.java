@@ -18,6 +18,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 
+import static Tests.StaffBuilder.pathFile;
+
 public class BaseTest {
     WebDriver driver;
     WebDriverWait wait;
@@ -27,7 +29,7 @@ public class BaseTest {
     DeleteStaff deleteStaff;
 
     @BeforeTest
-    public void preconditions() {
+    public void preConditions() {
         StaffBuilder staffBuilder = new StaffBuilder();
         staffBuilder.builderCVS();
 
@@ -41,6 +43,8 @@ public class BaseTest {
         usersPage = PageFactory.initElements(driver, UsersPage.class);
         invitePage = PageFactory.initElements(driver, InvitePage.class);
         deleteStaff = PageFactory.initElements(driver, DeleteStaff.class);
+
+        driver.get("https://app.yaware.com.ua/");
     }
 
     @AfterTest
@@ -50,7 +54,7 @@ public class BaseTest {
 
     @AfterClass
     public void afterClas() {
-        String fileName = "C:\\Users\\Public\\data\\staffData.csv";
+        String fileName = pathFile;
         try {
             Files.delete(Paths.get(fileName));
             System.out.println("staffData.csv is deleted");
