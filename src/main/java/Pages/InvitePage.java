@@ -82,6 +82,8 @@ public class InvitePage {
         waitMs(3000);
         dateSendingEmail = dataEmailsend.getText();
         dateSendingEmail = dateSendingEmail.replaceAll("[^0-9]", "");
+        dateSendingEmail = dateSendingEmail.substring(0,dateSendingEmail.length()-2);
+
     }
 
     public void checkLinkWithEmployeeEmail() throws IOException, UnsupportedFlavorException {

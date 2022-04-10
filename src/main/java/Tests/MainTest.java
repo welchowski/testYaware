@@ -9,6 +9,7 @@ import java.io.IOException;
 public class MainTest extends BaseTest {
     static String passwordStr = "Kc5a6kdxy8URGTr";
     static String emailStr = "rrrezera@gmail.com";
+    String dateSentEmail;
 
     @Test(priority = 1)
     public void loginTest() throws InterruptedException {
@@ -19,18 +20,19 @@ public class MainTest extends BaseTest {
     }
 
     @Test(priority = 2)
-    public void loafStaffTest() throws InterruptedException {
+    public void loafStaffTest() {
         usersPage.uploadStaff();
         Assert.assertEquals(usersPage.getMessageToast(), "Готово");
     }
 
     @Test(priority = 3)
-    public void inviteTest() throws InterruptedException, IOException, UnsupportedFlavorException {
+    public void inviteTest() throws IOException, UnsupportedFlavorException {
         invitePage.sendEmail();
         Assert.assertEquals(invitePage.getMessageToast(), "Пользователь был успешно приглашен.", "Error after sending invite");
 
         invitePage.checkDateInvitation();
-        Assert.assertEquals(invitePage.dateSendingEmail.substring(0, 9), invitePage.curentDate, "Date doesn't same");
+        dateSentEmail = invitePage.dateSendingEmail;
+        Assert.assertEquals(invitePage.dateSendingEmail, invitePage.curentDate, "Date doesn't same");
 
         invitePage.checkLinkWithEmployeeEmail();
         Assert.assertEquals(invitePage.checkEmail, true, "Email is absent in download link");
@@ -41,7 +43,7 @@ public class MainTest extends BaseTest {
     }
 
     @Test(priority = 4)
-    public void deleteStaffTest() throws InterruptedException, IOException, UnsupportedFlavorException {
+    public void deleteStaffTest() {
         deleteStaff.deleteStaff();
         Assert.assertEquals(deleteStaff.getMessageToast(), "Готово", "Error of deleting");
     }

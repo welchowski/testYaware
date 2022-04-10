@@ -1,9 +1,6 @@
 package Tests;
 
-import Pages.DeleteStaff;
-import Pages.InvitePage;
-import Pages.LoginPage;
-import Pages.UsersPage;
+import Pages.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -27,6 +24,7 @@ public class BaseTest {
     UsersPage usersPage;
     InvitePage invitePage;
     DeleteStaff deleteStaff;
+    testpage testpage;
 
     @BeforeTest
     public void preConditions() {
@@ -43,6 +41,7 @@ public class BaseTest {
         usersPage = PageFactory.initElements(driver, UsersPage.class);
         invitePage = PageFactory.initElements(driver, InvitePage.class);
         deleteStaff = PageFactory.initElements(driver, DeleteStaff.class);
+        testpage = PageFactory.initElements(driver, testpage.class);
 
         driver.get("https://app.yaware.com.ua/");
     }
@@ -54,9 +53,9 @@ public class BaseTest {
 
     @AfterClass
     public void afterClas() {
-        String fileName = pathFile;
+
         try {
-            Files.delete(Paths.get(fileName));
+            Files.delete(Paths.get(pathFile));
             System.out.println("staffData.csv is deleted");
         } catch (IOException e) {
             e.printStackTrace();
