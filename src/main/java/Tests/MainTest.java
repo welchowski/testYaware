@@ -37,7 +37,6 @@ public class MainTest extends BaseTest {
         invitePage.checkLinkWithEmployeeEmail();
         Assert.assertEquals(invitePage.checkEmail, true, "Email is absent in download link");
 
-
         invitePage.unSendEmail();
         Assert.assertNotEquals(invitePage.email, invitePage.emailAfterDeleting, "Employee is not deleted");
     }
